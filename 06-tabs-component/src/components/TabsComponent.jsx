@@ -7,19 +7,21 @@ const tabsComponent = [
 ]
 
 export default function TabsComponent() {
-  const [activeTab, setActiveTab] = useState('Tab 1')
+  const [activeTab, setActiveTab] = useState(0)
+  const activeContent = tabsComponent.find((tab, index) => index === activeTab)
   console.log(activeTab);
   return (
-    <div>
-      {tabsComponent.map((tab, index) => {
-        return (
-          <>
-            <h1 onClick={() => setActiveTab(tab.title)}>{tab.title}</h1>
-            {tab.title === activeTab && <p>{tab.content}</p>}
-          </>
-        )
-      })}
-
+    <div className="tab-container">
+      <div className="tab-headers">
+        {tabsComponent.map((tab, index) => {
+          return (
+            <>
+              <button onClick={() => setActiveTab(index)} className={`tab-header ${activeTab === index ? "active": ""}`}>{tab.title}</button>
+            </>
+          )
+        })}
+      </div>
+      <div className="tab-content">{activeContent.content}</div>
     </div>
   );
 }

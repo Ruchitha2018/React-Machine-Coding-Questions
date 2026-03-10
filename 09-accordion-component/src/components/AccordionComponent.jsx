@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const accordionData = [
   { title: 'Accordion 1', content: 'This is Accordion 1 Content' },
